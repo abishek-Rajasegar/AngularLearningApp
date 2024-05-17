@@ -1,0 +1,96 @@
+<button class="btn btn-danger" (click)="onClose()">X</button> <br />
+<br />
+<div class="row">
+  <div class="col-lg-5">
+    <img
+      src="{{ productImgClicked ? newImage : product.img }}"
+      alt="{{ product.name }}"
+      class="card responsive-img "
+      
+    />
+  </div>
+
+  <div class="col-lg-4">
+    <div class="">
+      <h2>{{ product.name }} | {{ product.price | currency : "INR" }}</h2>
+      <span class="badge badge-primary">30%</span>
+    </div>
+    <div>
+      <h4>Description:</h4>
+      {{ product.description }}
+    </div>
+    <br />
+    <div>
+      <button class="btn btn-success form-control" (click)="onBuyProduct(product.id)" [disabled]="size == ''">
+        Buy Product
+      </button>
+      <button
+        class="btn btn-warning form-control"
+        type="button"
+        (click)="addProductToCart(product.id)"
+        [disabled]="size == ''">
+        Add to cart !
+      </button>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <h6>
+      Quantity :
+      <input
+        type="number"
+        class="quantity"
+        value="1"
+        style="width: 40px"
+        [(ngModel)]="quantity"
+        min="1"
+      />
+    </h6>
+    <h6>Total Price: {{ quantity * product.price | currency : "INR" }}</h6>
+    <h6>Select Size:</h6>
+    <ul class="list-group list-group-horizontal">
+      <li
+        class="list-group-item"
+        [class.active]="size === 's'"
+        (click)="setSize('s')"
+      >
+        S
+      </li>
+      <li
+        class="list-group-item"
+        [class.active]="size === 'm'"
+        (click)="setSize('m')"
+      >
+        M
+      </li>
+      <li
+        class="list-group-item"
+        [class.active]="size === 'l'"
+        (click)="setSize('l')"
+      >
+        L
+      </li>
+      <li
+        class="list-group-item"
+        [class.active]="size === 'xl'"
+        (click)="setSize('xl')"
+      >
+        XL
+      </li>
+    </ul>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-lg-5">
+    <ul class="list-group list-group-horizontal">
+      <div *ngFor="let img of productImages!.images">
+        <img
+          src="{{ img }}"
+          alt=""
+          class="list-group-item list-items list-img"
+          (click)="onChangeImg(img)"
+        />
+      </div>
+    </ul>
+  </div>
+</div>

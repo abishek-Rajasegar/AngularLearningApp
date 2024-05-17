@@ -1,0 +1,22 @@
+.product-img{
+    object-fit: contain;
+    width: 100%;
+}
+
+p{
+    text-align: justify;
+}
+
+.list-group-item{
+    cursor: pointer;
+}
+
+.btn{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.disabled{
+    background: rgb(198, 198, 198);
+}
+

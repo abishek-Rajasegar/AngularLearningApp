@@ -1,0 +1,21 @@
+<h6>New Arrivals</h6>
+<div class="row">
+  <div
+    *ngFor="let product of products"
+    class="col-xs-6 col-sm-6 col-md-3 col-lg-2"
+  >
+    <div class="card" style="width: 10rem;" >
+      <a style="cursor: pointer" (click)="onClickNewArrival(product.id)">
+        <img
+          src="{{ product.img }}"
+          class="card-img-top "
+          alt="{{ product.name }}"
+        />
+      </a>
+    </div>
+    <p>
+      <span class="badge badge-success"> upto 30% Off</span>
+      {{ product.name }} | {{ product.price | currency : "INR" }}
+    </p>
+  </div>
+</div>

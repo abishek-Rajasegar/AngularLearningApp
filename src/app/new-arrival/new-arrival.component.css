@@ -1,0 +1,18 @@
+/* .card-img-top{
+    width: 150px;
+    height: 100px;
+} */
+
+.card-img-top {
+  object-fit: contain; 
+  max-width: 100%;
+  max-height: 100px;
+  height: auto;
+  display: block;
+}
+
+.custom-img {
+  object-fit: cover; /* or 'contain' or 'fill' depending on your need */
+  width: 100%;
+  height: auto;
+}
