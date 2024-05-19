@@ -19,20 +19,20 @@
     <h6>Price : {{ product.price }}</h6>
     <h6>Size : {{ product.size | uppercase }}</h6>
 
-    <button
-      class="btn btn-danger form-control"
-      (click)="onDeleteProductFromCart(product.id)"
-    >
+    <button class="btn btn-danger form-control" (click)="onDeleteProductFromCart(product.id)">
       Delete
     </button>
-    <button class="btn btn-success form-control">Buy</button>
+    <button class="btn btn-success form-control" [routerLink]="['/userdetails']" *ngIf="enableBuyButton"
+      (click)="onBuyButtonClick()">Buy</button>
   </div>
 </div>
-<br />
-<br />
-<hr />
 <div class="row">
-  <div class="col-lg-12">
-    <h2>Total cart Value: {{ cartTotal | currency : "INR" }}</h2>
+  <div class="col-lg-5"></div>
+  <div class="col-lg-5"></div>
+  <div class="col-lg-2">
+    <h4 *ngIf="products[0].id !== undefined">Total: {{ cartTotal | currency : "INR" }}</h4>
   </div>
+  <br>
+  <br>
+  <hr>
 </div>

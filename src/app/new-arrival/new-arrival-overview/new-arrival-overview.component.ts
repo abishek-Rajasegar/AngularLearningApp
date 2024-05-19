@@ -14,7 +14,7 @@ import { Cart } from '../../cart';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './new-arrival-overview.component.html',
-  styleUrl: './new-arrival-overview.component.css'
+  styleUrl: './new-arrival-overview.component.css',
 })
 export class NewArrivalOverviewComponent implements OnInit {
   product!: ProductInterface;
@@ -22,20 +22,23 @@ export class NewArrivalOverviewComponent implements OnInit {
   productToCart!: Cart;
   pid!: string;
   productImgClicked = false;
-  newImage = ''
+  newImage = '';
   quantity = 1;
   size = '';
 
-  constructor(private route: ActivatedRoute, private router: Router, private productService: Product) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private productService: Product
+  ) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params) => {
       this.product = this.productService.getProductById(params.get('id')!)!;
-      this.productImages = this.productService.getProductImage(params.get('id')!);
-
+      this.productImages = this.productService.getProductImage(
+        params.get('id')!
+      );
     });
-
   }
 
   onClose() {
@@ -50,28 +53,27 @@ export class NewArrivalOverviewComponent implements OnInit {
   }
 
   addProductToCart(id: string) {
-
-    this.productToCart = ({
+    this.productService.enableBuyButton = true;
+    this.productToCart = {
       id: this.product.id,
       name: this.product.name,
       img: this.product.img,
       description: this.product.description,
       quantity: this.quantity,
       price: this.quantity * this.product.price,
-      size: this.size
-    })
+      size: this.size,
+    };
     this.productService.addToCart(this.productToCart);
-    this.router.navigate(['/cart', id])
+    this.router.navigate(['/cart', id]);
   }
 
   setSize(size: string) {
     this.size = size;
-
   }
 
   onBuyProduct(id: string) {
     this.addProductToCart(id);
-    this.router.navigate(['userdetails'])
+    this.productService.enableBuyButton = false;
+    this.router.navigate(['userdetails']);
   }
-
 }
