@@ -4,17 +4,19 @@
     *ngFor="let product of products"
     class="col-xs-6 col-sm-6 col-md-3 col-lg-2"
   >
-    <div class="card" style="width: 10rem;" >
+    <div class="card" style="width: 8rem; height: 7.1 rem">
       <a style="cursor: pointer" (click)="onClickNewArrival(product.id)">
         <img
           src="{{ product.img }}"
-          class="card-img-top "
+          class="card-img-top"
           alt="{{ product.name }}"
         />
       </a>
     </div>
-    <p>
-      <span class="badge badge-success"> upto 30% Off</span>
+    <p class="card-details">
+      <span class="badge badge-success">
+        upto {{ product.discount+'%' }} Off</span
+      >
       {{ product.name }} | {{ product.price | currency : "INR" }}
     </p>
   </div>

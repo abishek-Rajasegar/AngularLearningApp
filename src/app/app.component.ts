@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CartComponent } from './cart/cart.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ProductCheckoutComponent } from './product-checkout/product-checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ import { ProductCheckoutComponent } from './product-checkout/product-checkout.co
     NewArrivalOverviewComponent,
     CartComponent,
     UserDetailComponent,
-    ProductCheckoutComponent]
+    ProductCheckoutComponent, ReactiveFormsModule]
 })
 export class AppComponent {
 

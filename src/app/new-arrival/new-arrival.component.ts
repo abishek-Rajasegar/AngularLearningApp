@@ -13,11 +13,12 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class NewArrivalComponent implements OnInit {
-  products: ProductInterface[] = [
+  products: ProductInterface[] = [];
 
-  ];
-
-  constructor(private route: ActivatedRoute, private router: Router, private productService: Product) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private productService: Product) {
 
   }
 

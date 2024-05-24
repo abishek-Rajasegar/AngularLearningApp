@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { ProductImages } from '../../product-images';
 import { FormsModule } from '@angular/forms';
 import { Cart } from '../../cart';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-new-arrival-overview',
@@ -25,12 +26,13 @@ export class NewArrivalOverviewComponent implements OnInit {
   newImage = '';
   quantity = 1;
   size = '';
+  cartId = 0;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: Product
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
@@ -55,16 +57,13 @@ export class NewArrivalOverviewComponent implements OnInit {
   addProductToCart(id: string) {
     this.productService.enableBuyButton = true;
     this.productToCart = {
-      id: this.product.id,
-      name: this.product.name,
-      img: this.product.img,
-      description: this.product.description,
+      id: this.cartId++,
+      product: this.product,
       quantity: this.quantity,
-      price: this.quantity * this.product.price,
       size: this.size,
     };
     this.productService.addToCart(this.productToCart);
-    this.router.navigate(['/cart', id]);
+    //this.router.navigate(['/cart', id]);
   }
 
   setSize(size: string) {

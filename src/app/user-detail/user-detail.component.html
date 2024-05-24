@@ -1,54 +1,102 @@
 <div>
   <app-cart></app-cart>
 </div>
+<hr />
+<br />
 <div>
   <form class="form-group" [formGroup]="userDetails" (ngSubmit)="onSubmit()">
     <div class="row">
-      <div class="col-lg-4">
-        <h3>Contact Details</h3>
-        <label for="">First Name</label>
-        <input type="text" name="firstName" formControlName="firstName" class="form-control"
-          placeholder="Enter First Name" />
-        <label for="">Last Name</label>
-        <input type="text" name="lastName" class="form-control" formControlName="lastName"
-          placeholder="Enter Last Name" />
+      <div class="col-lg-5">
+        <h4 style="text-align: center">Contact Details</h4>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          formControlName="firstName"
+          class="form-control"
+          placeholder="Enter First Name"
+        />
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          class="form-control"
+          formControlName="lastName"
+          placeholder="Enter Last Name"
+        />
 
         <div class="row">
           <div class="col-lg-6">
             <label for="">Email</label>
-            <input type="text" name="email" formControlName="email" class="form-control" placeholder="Enter Email" />
+            <input
+              type="text"
+              name="email"
+              formControlName="email"
+              class="form-control"
+              placeholder="Enter Email"
+            />
           </div>
           <div class="col-lg-6">
-            <label for="">Contact Number</label>
-            <input type="number" name="number" formControlName="number" class="form-control"
-              placeholder="Enter Contact Number" />
+            <label>Contact Number</label>
+            <input
+              type="number"
+              name="number"
+              formControlName="number"
+              class="form-control"
+              placeholder="Enter Contact Number"
+            />
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6" formGroupName="addressDetails">
-        <h3>Delivery Details</h3>
+      <div class="col-lg-7" formGroupName="addressDetails">
+        <h4 class="text-center">Delivery Details</h4>
         <label>Address Line 1</label>
-        <input type="text" name="address1" class="form-control" formControlName="address1"
-          placeholder="Enter Contact Address 1" />
-        <label for="">Address Line 2</label>
-        <input type="text" name="address2" class="form-control" formControlName="address1"
-          placeholder="Enter Contact Address 2" />
+        <input
+          type="text"
+          name="address1"
+          class="form-control"
+          formControlName="address1"
+          placeholder="Enter Address 1"
+        />
+        <label>Address Line 2</label>
+        <input
+          type="text"
+          name="address2"
+          class="form-control"
+          formControlName="address1"
+          placeholder="Enter Address 2"
+        />
         <div class="row">
           <div class="col-lg-4">
-            <label for="">City</label>
-            <input type="text" name="city" class="form-control" formControlName="city"
-              placeholder="Enter Contact CIty" />
+            <label>City</label>
+            <input
+              type="text"
+              name="city"
+              class="form-control"
+              formControlName="city"
+              placeholder="Enter City"
+            />
           </div>
           <div class="col-lg-4">
-            <label for="">State</label>
-            <input type="text" name="state" class="form-control" formControlName="state"
-              placeholder="Enter Contact State" />
+            <label>State</label>
+            <input
+              type="text"
+              name="state"
+              class="form-control"
+              formControlName="state"
+              placeholder="Enter State"
+            />
           </div>
           <div class="col-lg-4">
-            <label for="">Pin-code</label>
-            <input type="number" name="pinCode" class="form-control" formControlName="pinCode"
-              placeholder="Enter Contact pinCode" />
+            <label>Pin-code</label>
+            <input
+              type="number"
+              name="pinCode"
+              class="form-control"
+              formControlName="pinCode"
+              placeholder="Enter PinCode"
+            />
           </div>
         </div>
       </div>
@@ -57,13 +105,17 @@
       <div class="col-lg-12">
         <div class="row">
           <div class="col-lg-4">
-            <button class="btn btn-success form-control" type="submit" (click)="onBuyProduct()">
+            <button class="btn btn-success form-control" type="submit">
               Proceed to Buy!
             </button>
           </div>
-          <div class="col-lg-4">
-            <button class="btn btn-warning form-control" type="button" (click)="onClearForm()">
-              Clear Form
+          <div class="col-lg-4 col-sm-12">
+            <button
+              class="btn btn-warning form-control"
+              type="button "
+              (click)="onClearForm()"
+            >
+              Clear
             </button>
           </div>
         </div>

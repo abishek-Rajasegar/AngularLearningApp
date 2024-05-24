@@ -4,15 +4,21 @@
 } */
 
 .card-img-top {
-  object-fit: contain; 
+  object-fit: cover;
   max-width: 100%;
-  max-height: 100px;
-  height: auto;
-  display: block;
+  max-height: 7rem;
+  height: 7rem;
+  border-radius: 4px;
+  /* height: auto; */
 }
 
 .custom-img {
   object-fit: cover; /* or 'contain' or 'fill' depending on your need */
   width: 100%;
   height: auto;
+}
+
+.card-details,
+p {
+  font-size: 65%;
 }

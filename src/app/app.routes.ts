@@ -8,7 +8,8 @@ import { ProductCheckoutComponent } from './product-checkout/product-checkout.co
 export const routes: Routes = [
     { path: '', component: NewArrivalComponent },
     { path: 'overview/:id', component: NewArrivalOverviewComponent },
-    { path: 'cart/:id', component: CartComponent },
+    // { path: 'cart/:id', component: CartComponent },
+    { path: 'cart', component: CartComponent },
     { path: 'userdetails', component: UserDetailComponent },
     { path: 'checkout', component: ProductCheckoutComponent }
 ];

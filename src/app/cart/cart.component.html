@@ -1,38 +1,56 @@
 <button class="btn btn-danger outline" (click)="onCloseCart()">X</button>
 
-<div class="row" *ngFor="let product of products">
+<div class="row" *ngFor="let product of cartProducts!">
   <div class="col-lg-4">
-    <img class="card product-img" src="{{ product.img }}" alt="" />
+    <img
+      class="card product-img"
+      src="{{ product.product.img }}"
+      alt="{{ product.product.name }}"
+    />
   </div>
   <div class="col-lg-4">
-    <h5>{{ product.name }}</h5>
+    <h5>{{ product.product.name }}</h5>
     <p>
-      {{ product.price | currency : "INR" }}
+      {{ product.product.price | currency : "INR" }}
       <span class="badge badge-warning">30% off </span>
     </p>
     <p>
-      {{ product.description }}
+      {{ product.product.description }}
     </p>
   </div>
   <div class="col-lg-4">
     <h6>Quantity : {{ product.quantity }}</h6>
-    <h6>Price : {{ product.price }}</h6>
+    <h6>
+      Price : {{ product.quantity * product.product.price | currency : "INR" }}
+    </h6>
     <h6>Size : {{ product.size | uppercase }}</h6>
 
-    <button class="btn btn-danger form-control" (click)="onDeleteProductFromCart(product.id)">
+    <button
+      class="btn btn-danger form-control"
+      (click)="onDeleteProductFromCart(product!.product!.id!)"
+    >
       Delete
     </button>
-    <button class="btn btn-success form-control" [routerLink]="['/userdetails']" *ngIf="enableBuyButton"
-      (click)="onBuyButtonClick()">Buy</button>
+    <button
+      class="btn btn-success form-control"
+      [routerLink]="['/userdetails']"
+      *ngIf="enableBuyButton"
+      (click)="onBuyButtonClick()"
+      type="button"
+    >
+      Buy
+    </button>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-5"></div>
   <div class="col-lg-5"></div>
-  <div class="col-lg-2">
-    <h4 *ngIf="products[0].id !== undefined">Total: {{ cartTotal | currency : "INR" }}</h4>
+  <div class="col-lg-2" *ngIf="cartProducts !== undefined">
+    <h4 *ngIf="cartProducts![0].id! !== undefined">
+      Total: {{ cartTotal | currency : "INR" }}
+    </h4>
   </div>
-  <br>
-  <br>
-  <hr>
+  <br />
+  <br />
+  <hr />
 </div>

@@ -1,9 +1,8 @@
+import { ProductInterface } from "./product";
+
 export interface Cart {
-    id: string
-    name: string;
-    img: string;
-    description: string;
+    id: number;
+    product: ProductInterface;
     quantity: number;
-    price: number;
     size: string;
 }

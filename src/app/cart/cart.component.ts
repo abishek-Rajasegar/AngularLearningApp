@@ -5,7 +5,6 @@ import { CommonModule, Location } from '@angular/common';
 import { ProductInterface } from '../product';
 import { FormsModule } from '@angular/forms';
 import { Cart } from '../cart';
-import { faRupiahSign } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +14,7 @@ import { faRupiahSign } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
-  products: Cart[] = [];
+  cartProducts: Cart[] = [];
   size: string = '';
   cartDetails!: Cart;
   cartTotal: number = 0;
@@ -24,14 +23,14 @@ export class CartComponent implements OnInit {
   constructor(
     private productService: Product,
     private location: Location,
-    private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.enableBuyButton = this.productService.enableBuyButton;
-    this.products = this.productService.getAllCartProduct()!;
-    this.products.forEach((product) => (this.cartTotal += product.price));
+    this.cartProducts = this.productService.getAllCartProduct()!;
+    this.cartTotal = this.productService.totalCartValue;
+    this.productService.enableBuyButton = this.productService.enableBuyButton === false ? true : false;
   }
 
   onCloseCart() {
@@ -40,11 +39,14 @@ export class CartComponent implements OnInit {
   }
 
   onDeleteProductFromCart(id: string) {
-    const index = this.products.findIndex((product) => product.id === id);
-    const pid = this.products[index].id;
-    this.cartTotal -= this.products[index].price;
-    this.products.splice(index, 1);
-    if (index === 0) {
+    const index = this.cartProducts.findIndex((product) => product.product.id === id);
+    const pid = this.cartProducts[index].product.id;
+    this.cartTotal -= this.cartProducts[index].product.price * this.cartProducts[index].quantity;
+    this.cartProducts.splice(index, 1);
+    this.productService.subject.next(this.cartProducts);
+    if (this.cartProducts.length === 0) {
+      this.productService.totalCartValue = 0;
+      this.cartTotal = this.productService.totalCartValue;
       this.router.navigate(['/overview', pid]);
     }
   }

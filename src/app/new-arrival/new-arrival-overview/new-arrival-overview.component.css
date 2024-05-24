@@ -1,10 +1,10 @@
 .responsive-img {
   object-fit: fill;
-  width: 400px;
+  max-width: 100%;
+  width: 445px;
   height: 350px;
-  display: grid;
+  display: block;
 }
-
 
 .card-img {
   margin-bottom: 2px;
@@ -12,7 +12,7 @@
   height: 50px;
 }
 
-.list-img{
+.list-img {
   width: 10%;
   height: 10%;
   max-width: 100%;
@@ -27,11 +27,11 @@
   cursor: pointer;
 }
 
-.btn{
+.btn {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.quantity{
+.quantity {
   width: 60px;
 }
