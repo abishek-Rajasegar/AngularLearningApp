@@ -12,6 +12,7 @@ export class Product {
   cartProductDetails: Cart[] = [];
   enableBuyButton = true;
   totalCartValue = 0;
+  cartCount = 0;
   subject = new Subject<Cart[]>();
 
   products: ProductInterface[] = [
@@ -85,6 +86,8 @@ export class Product {
   ];
 
   addToCart(product: Cart) {
+    product.id = this.cartCount++;
+    
     const index = this.cartProductDetails.findIndex(
       (cartProduct) => cartProduct.product.id === product.product.id
     );
@@ -99,6 +102,12 @@ export class Product {
     this.totalCartValue += product.quantity * product.product.price;
     this.subject.next(this.cartProductDetails);
 
+  }
+
+  getCartProductById(id: number) {
+    console.log(id);
+
+    return this.cartProductDetails.find(product => product.id === id)
   }
 
   getAllCartProduct() {

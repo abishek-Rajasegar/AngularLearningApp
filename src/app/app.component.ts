@@ -25,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NewArrivalOverviewComponent,
     CartComponent,
     UserDetailComponent,
-    ProductCheckoutComponent, ReactiveFormsModule]
+    ProductCheckoutComponent,
+    ReactiveFormsModule]
 })
 export class AppComponent {
 

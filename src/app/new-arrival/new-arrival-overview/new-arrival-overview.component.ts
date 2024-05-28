@@ -61,6 +61,7 @@ export class NewArrivalOverviewComponent implements OnInit {
       product: this.product,
       quantity: this.quantity,
       size: this.size,
+      productTotal: this.product.price * this.quantity
     };
     this.productService.addToCart(this.productToCart);
     //this.router.navigate(['/cart', id]);
@@ -73,6 +74,6 @@ export class NewArrivalOverviewComponent implements OnInit {
   onBuyProduct(id: string) {
     this.addProductToCart(id);
     this.productService.enableBuyButton = false;
-    this.router.navigate(['userdetails']);
+    this.router.navigate(['userdetails', id]);
   }
 }

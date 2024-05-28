@@ -1,19 +1,20 @@
 <button class="btn btn-danger outline" (click)="onCloseCart()">X</button>
 
 <div class="row" *ngFor="let product of cartProducts!">
-  <div class="col-lg-4">
+  <div class="col-lg-3">
     <img
       class="card product-img"
       src="{{ product.product.img }}"
       alt="{{ product.product.name }}"
     />
   </div>
-  <div class="col-lg-4">
-    <h5>{{ product.product.name }}</h5>
-    <p>
+  <div class="col-lg-5">
+    <h4>
+      {{ product.product.name }} |
       {{ product.product.price | currency : "INR" }}
-      <span class="badge badge-warning">30% off </span>
-    </p>
+    </h4>
+    <p class="badge badge-primary">{{ product.product.discount }} off</p>
+
     <p>
       {{ product.product.description }}
     </p>
@@ -21,7 +22,8 @@
   <div class="col-lg-4">
     <h6>Quantity : {{ product.quantity }}</h6>
     <h6>
-      Price : {{ product.quantity * product.product.price | currency : "INR" }}
+      Price :
+      {{ product.quantity * product.product.price | currency : "INR" }}
     </h6>
     <h6>Size : {{ product.size | uppercase }}</h6>
 
@@ -33,20 +35,21 @@
     </button>
     <button
       class="btn btn-success form-control"
-      [routerLink]="['/userdetails']"
+      [routerLink]="['/userdetails', product.id]"
       *ngIf="enableBuyButton"
-      (click)="onBuyButtonClick()"
+      (click)="onBuyButtonClick(product.product.id, product.size)"
       type="button"
     >
       Buy
     </button>
   </div>
 </div>
+
 <div class="row">
   <div class="col-lg-5"></div>
   <div class="col-lg-5"></div>
   <div class="col-lg-2" *ngIf="cartProducts !== undefined">
-    <h4 *ngIf="cartProducts![0].id! !== undefined">
+    <h4 *ngIf="cartProducts !== undefined">
       Total: {{ cartTotal | currency : "INR" }}
     </h4>
   </div>

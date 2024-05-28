@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
   cartDetails!: Cart;
   cartTotal: number = 0;
   enableBuyButton!: boolean;
+  selectedToBuy = '';
 
   constructor(
     private productService: Product,
@@ -29,6 +30,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.enableBuyButton = this.productService.enableBuyButton;
     this.cartProducts = this.productService.getAllCartProduct()!;
+    console.log(this.cartProducts);
     this.cartTotal = this.productService.totalCartValue;
     this.productService.enableBuyButton = this.productService.enableBuyButton === false ? true : false;
   }
@@ -51,7 +53,10 @@ export class CartComponent implements OnInit {
     }
   }
 
-  onBuyButtonClick() {
+  onBuyButtonClick(id: any, size: any) {
     this.productService.enableBuyButton = false;
+    let cartProductId = this.productService.getAllCartProduct().find(product => product.product.id === id && product.size === size)!.id;
+    console.log("cartProduct Id: " + cartProductId);
+    this.router.navigate(['/userdetails', cartProductId]);
   }
 }

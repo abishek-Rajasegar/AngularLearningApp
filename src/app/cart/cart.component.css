@@ -1,27 +1,32 @@
-.product-img{
-    object-fit: contain;
-    width: 100%;
+.product-img {
+  object-fit: cover;
+  max-width: 100%;
+  display: block;
 }
 
-p{
-    text-align: justify;
+p {
+  text-align: justify;
 }
 
-.list-group-item{
-    cursor: pointer;
+.list-group-item {
+  cursor: pointer;
 }
 
-.btn{
-    margin-top: 10px;
+.btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.disabled {
+  background: rgb(198, 198, 198);
+}
+
+.product-img {
+  width: 300px;
+  height: 200px;
+  object-fit: fill;
+}
+
+.row{
     margin-bottom: 10px;
-}
-
-.disabled{
-    background: rgb(198, 198, 198);
-}
-
-.product-img{
-    width: 300px;
-    height: 200px;
-    object-fit: fill;
 }

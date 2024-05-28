@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
 import { Product } from '../product.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { OrderService } from '../order.service';
+import { UserInterface } from '../user-interface';
 
 @Component({
   selector: 'app-user-detail',
@@ -14,8 +16,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class UserDetailComponent implements OnInit {
   displayCarItem = true;
   userDetails: FormGroup;
+  cartProduct: any = {};
 
-  constructor(private router: Router, private productService: Product) {
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private productService: Product,
+    private orderService: OrderService) {
     this.userDetails = new FormGroup({
       firstName: new FormControl('testFName'),
       lastName: new FormControl('testLname'),
@@ -36,15 +42,23 @@ export class UserDetailComponent implements OnInit {
     if (this.productService.getAllCartProduct().length === 0) {
       this.router.navigate(['/']);
     }
+
   }
 
   onSubmit() {
-    console.log(this.userDetails.value);
-    this.router.navigate(['checkout']);
-  }
+    this.userDetails.value.id = 1;
+    this.route.paramMap.subscribe((param) => {
+      this.cartProduct =
+        this.productService.getCartProductById(+param.get('id')!)!;
+    });
+    console.log('testing cart product ' + this.cartProduct);
 
+    this.orderService.createOrder(this.userDetails.value, this.cartProduct);
+    this.router.navigate(['/checkout']);
+  }
 
   onClearForm() {
     this.userDetails.reset();
   }
+
 }

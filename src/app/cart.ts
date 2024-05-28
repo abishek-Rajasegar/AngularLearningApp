@@ -5,4 +5,5 @@ export interface Cart {
     product: ProductInterface;
     quantity: number;
     size: string;
+    productTotal: number
 }
