@@ -1,14 +1,11 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Product } from '../../product.service';
+import { Product } from '../../service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
-import { ProductInterface } from '../../product';
-import { BrowserModule } from '@angular/platform-browser';
+import { ProductInterface } from '../../interface/product.interface';
 import { CommonModule } from '@angular/common';
-import { ProductImages } from '../../product-images';
+import { ProductImages } from '../../interface/product-images.interface';
 import { FormsModule } from '@angular/forms';
-import { Cart } from '../../cart';
-import { Subject } from 'rxjs';
+import { Cart } from '../../interface/cart.interface';
 
 @Component({
   selector: 'app-new-arrival-overview',

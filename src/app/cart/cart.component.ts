@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Product } from '../product.service';
+import { Product } from '../service/product.service';
 import { CommonModule, Location } from '@angular/common';
-import { ProductInterface } from '../product';
+import { ProductInterface } from '../interface/product.interface';
 import { FormsModule } from '@angular/forms';
-import { Cart } from '../cart';
+import { Cart } from '../interface/cart.interface';
 
 @Component({
   selector: 'app-cart',

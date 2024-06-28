@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
-import { Product } from '../product.service';
+import { Product } from '../service/product.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { OrderService } from '../order.service';
-import { UserInterface } from '../user-interface';
+import { OrderService } from '../service/order.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,7 +20,8 @@ export class UserDetailComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private productService: Product,
-    private orderService: OrderService) {
+    private orderService: OrderService)
+{
     this.userDetails = new FormGroup({
       firstName: new FormControl('testFName'),
       lastName: new FormControl('testLname'),
@@ -52,7 +52,6 @@ export class UserDetailComponent implements OnInit {
         this.productService.getCartProductById(+param.get('id')!)!;
     });
     console.log('testing cart product ' + this.cartProduct);
-
     this.orderService.createOrder(this.userDetails.value, this.cartProduct);
     this.router.navigate(['/checkout']);
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ProductInterface } from './product';
-import { ProductImages } from './product-images';
-import { Cart } from './cart';
+import { ProductInterface } from '../interface/product.interface';
+import { ProductImages } from '../interface/product-images.interface';
+import { Cart } from '../interface/cart.interface';
 import { Subject } from 'rxjs';
 
 @Injectable({

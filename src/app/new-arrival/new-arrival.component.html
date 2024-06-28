@@ -2,9 +2,9 @@
 <div class="row">
   <div
     *ngFor="let product of products"
-    class="col-xs-6 col-sm-6 col-md-3 col-lg-2"
+    class="col-6 col-sm-4 col-md-3 col-lg-2"
   >
-    <div class="card" style="width: 8rem; height: 7.1 rem">
+    <div class="card" style="width: 8rem; height: 7.1rem">
       <a style="cursor: pointer" (click)="onClickNewArrival(product.id)">
         <img
           src="{{ product.img }}"
@@ -13,11 +13,9 @@
         />
       </a>
     </div>
-    <p class="card-details">
-      <span class="badge badge-success">
-        upto {{ product.discount+'%' }} Off</span
-      >
-      {{ product.name }} | {{ product.price | currency : "INR" }}
-    </p>
+    <h6>
+      <p class="badge badge-success card-details">{{ product.discount + "%" }} Off</p>
+      <p>{{ product.name }} | {{ product.price | currency : "INR" }}</p>
+    </h6>
   </div>
 </div>

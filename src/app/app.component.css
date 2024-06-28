@@ -2,10 +2,12 @@
     max-width: 100%;
     height: auto;
     display: block;
+
 }
 
 .img{
     max-width: 100;
     display: blocks;
     height: auto;
+    margin-left: 20px;
 }

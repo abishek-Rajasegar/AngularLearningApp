@@ -1,3 +1,12 @@
 .nav-item{
     text-align: center;
 }
+
+.logo{
+    color: white;
+}
+
+.cart-icon{
+    width: 15px;
+    height: 15px;
+}

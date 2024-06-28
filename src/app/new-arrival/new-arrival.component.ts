@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Product } from '../product.service';
-import { NewArrivalOverviewComponent } from "./new-arrival-overview/new-arrival-overview.component";
+import { Product } from '../service/product.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ProductInterface } from '../product';
+import { ProductInterface } from '../interface/product.interface';
 import { CommonModule } from '@angular/common';
 
 @Component({
